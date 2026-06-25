@@ -228,3 +228,47 @@ export const SHARING_PRIVACY_TIPS = [
   "Check who can comment — family replies reveal names too",
   "Scroll through old posts. What\u2019s still public?",
 ];
+
+export const PAUSE_STATS = [
+  {
+    highlight: "830,000",
+    prefix: "Up to",
+    text: "UK adults are estimated to pose some degree of sexual risk to children.",
+  },
+  {
+    highlight: "311,610",
+    text: "reports were confirmed by the Internet Watch Foundation in 2025 as child sexual abuse material, or links/adverts to it.",
+  },
+  {
+    highlight: "63,682",
+    text: "child sexual abuse videos were assessed by the IWF in 2025 \u2014 a 50% increase on the year before.",
+  },
+  {
+    highlight: "140,276",
+    text: "images and videos of child sexual abuse in 2025 were recorded as \u201cself-generated\u201d \u2014 meaning children were often groomed, deceived or extorted into producing them.",
+  },
+  {
+    highlight: "1,894",
+    text: "UK young people used Report Remove in 2025 to report sexual images/videos of themselves \u2014 a 66% increase in one year.",
+  },
+  {
+    highlight: "394",
+    text: "Report Remove cases involved sexual extortion. In those cases, 98% of victims were boys aged 14\u201317.",
+  },
+  {
+    highlight: "7,263",
+    text: "online grooming offences were recorded by UK police in the latest NSPCC data; where the platform was known, 40% happened on Snapchat.",
+  },
+  {
+    highlight: "80%",
+    text: "of children targeted in grooming offences were girls, where gender was known. The youngest recorded victim was 4 years old.",
+  },
+  {
+    highlight: "4,586",
+    text: "realistic AI-generated child sexual abuse images were assessed by the IWF in 2025; 97% depicted girls.",
+  },
+  {
+    highlight: "1,300",
+    text: "photos and videos of their child, on average, that parents have posted online by age 13.",
+  },
+] as const;

@@ -8,7 +8,7 @@ import { scrollToSection } from "../../utils/scroll";
 const NAV_LINKS = [
   { label: "What they can learn", href: "what-you-posted" },
   { label: "What they can do", href: "what-ai-can-do" },
-  { label: "Don\u2019t believe us", href: "dont-believe-us" },
+  { label: "The Reality", href: "dont-believe-us" },
   { label: "Share safely", href: "ten-second-check" },
 ];
 
