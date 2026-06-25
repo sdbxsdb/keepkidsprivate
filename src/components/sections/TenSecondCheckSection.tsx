@@ -3,7 +3,7 @@ import {
   NSPCC_PHOTO_GUIDANCE,
   SHARING_PRIVACY_TIPS,
 } from "../../content/copy";
-import { IconCheck, IconShieldCheck } from "@tabler/icons-react";
+import { IconCheck } from "@tabler/icons-react";
 
 export function TenSecondCheckSection() {
   return (

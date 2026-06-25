@@ -4,8 +4,8 @@ export const TAGLINE = "A photo of a child is not just a photo anymore.";
 export const CORE_MESSAGE = {
   learn: "What they can find out from your post",
   image: "What they can do with your child's image",
-  // bridge:
-  //   "A normal post reveals who they are. A clear photo shows what they look like. Together, that is enough to copy, fake and target them.",
+  bridge:
+    "A normal post reveals who they are. A clear photo shows what they look like. Together, that is enough to copy, fake and target them.",
 };
 
 export const EXAMPLE_POST = {
