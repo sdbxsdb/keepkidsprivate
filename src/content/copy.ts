@@ -14,7 +14,7 @@ export const EXAMPLE_POST = {
   timeAgo: "2h",
   audience: "Friends",
   caption:
-    "First day at school! Can\u2019t believe Sophie is 5 already. So proud of our little star. I used to hold her hand all the way, now she wants to walk herself U0001f979",
+    "First day at school! Can\u2019t believe Sophie is 5 already. So proud of our little star. I used to hold her hand all the way, now she wants to walk herself \u{1F979}",
   captionMarkers: {
     milestone: "First day at school",
     name: "Sophie",
