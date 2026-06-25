@@ -200,7 +200,6 @@ export const AI_DISCLOSURE = {
     "No real families were involved.",
     "If AI can create this from nothing, imagine what it can do with the real photos we post every day.",
     "Once a child\u2019s image is online, you lose control of where it goes, who saves it, and what it can become.",
-    "Keep kids private.",
   ],
   imageBadge: "100% AI",
 };
@@ -221,7 +220,7 @@ export const NSPCC_PHOTO_GUIDANCE = {
 
 export const SHARING_PRIVACY_TIPS = [
   "Set your profile and posts to private — not public",
-  "Audit your friends list. Do you actually know everyone on it?",
+  "Audit your friends list. Do you actually know everyone on it and trust them?",
   "Want someone to see a photo? Send it to them directly",
   "Don\u2019t show the world when a text, DM or group chat would do",
   "Turn off location tagging before you upload",

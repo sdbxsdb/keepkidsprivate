@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: "What they can do", href: "what-ai-can-do" },
   { label: "The Reality", href: "dont-believe-us" },
   { label: "Share safely", href: "ten-second-check" },
+  { label: "The Stats", href: "final-cta" },
 ];
 
 export function Header() {
@@ -41,7 +42,7 @@ export function Header() {
           <div className="flex items-center justify-between h-[72px]">
             <a
               href="#top"
-              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warm-400 rounded-lg flex items-center gap-2.5"
+              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warm-400 rounded-lg flex items-center gap-2.5 cursor-pointer"
               aria-label={`${SITE_NAME} — back to top`}
               onClick={(e) => {
                 e.preventDefault();
@@ -68,7 +69,7 @@ export function Header() {
                 <button
                   key={link.href}
                   type="button"
-                  className="px-3 py-2 text-sm font-medium text-slate-400 hover:text-white rounded-lg
+                  className="px-3 py-2 text-sm font-medium text-slate-400 hover:text-white rounded-lg cursor-pointer
                              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warm-400 transition-colors duration-150"
                   onClick={() => handleNavClick(link.href)}
                 >
@@ -130,7 +131,7 @@ export function Header() {
             <button
               key={link.href}
               type="button"
-              className="flex items-center px-4 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-left w-full
+              className="flex items-center px-4 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg text-left w-full cursor-pointer
                          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warm-400 transition-colors"
               onClick={() => handleNavClick(link.href)}
             >

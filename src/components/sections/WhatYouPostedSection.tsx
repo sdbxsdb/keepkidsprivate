@@ -20,13 +20,15 @@ function ThemeChipList({
 }) {
   return (
     <div>
-      <div className="flex items-center gap-2 mb-4 justify-center">
+      <div className="flex items-center gap-2 mb-4 justify-center flex-nowrap">
         <Icon
           size={18}
-          className={variant === "learn" ? "text-sky-400" : "text-warm-400"}
+          className={`flex-shrink-0 ${variant === "learn" ? "text-sky-400" : "text-warm-400"}`}
           aria-hidden="true"
         />
-        <p className="text-sm font-semibold text-white">{title}</p>
+        <p className="text-sm font-semibold text-white whitespace-nowrap">
+          {title}
+        </p>
       </div>
       <div className="flex flex-wrap justify-center gap-2">
         {items.map((item) => (
@@ -53,9 +55,9 @@ export function WhatYouPostedSection() {
       className="section-padding border-t border-slate-800/50 bg-warm-glow"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center mb-12 max-w-3xl mx-auto">
+        <header className="text-center mb-12 max-w-4xl mx-auto">
           <p className="eyebrow mb-3">One post, many risks</p>
-          <h2 className="section-heading mb-4">
+          <h2 className="section-heading mb-4 lg:whitespace-nowrap">
             What someone can learn from a single post
           </h2>
           <p className="section-subheading">{CORE_MESSAGE.bridge}</p>
@@ -64,7 +66,7 @@ export function WhatYouPostedSection() {
         <div className="grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-8 xl:gap-10 max-w-6xl mx-auto items-start">
           <div className="min-w-0">
             <div className="mb-5">
-              <h3 className="text-lg sm:text-xl font-semibold text-white mb-1">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 lg:whitespace-nowrap">
                 What you think you posted
               </h3>
               <p className="text-sm text-slate-400">
@@ -93,7 +95,7 @@ export function WhatYouPostedSection() {
             className="min-w-0 scroll-mt-24 lg:col-start-3"
           >
             <div className="mb-5">
-              <h3 className="text-lg sm:text-xl font-semibold text-warm-300 mb-1">
+              <h3 className="text-lg sm:text-xl font-semibold text-warm-300 mb-1 lg:whitespace-nowrap">
                 What someone can take from it
               </h3>
               <p className="text-sm text-slate-400">
@@ -104,7 +106,7 @@ export function WhatYouPostedSection() {
           </div>
         </div>
 
-        <div className="mt-16 max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+        <div className="mt-16 max-w-5xl mx-auto grid md:grid-cols-2 gap-10 lg:gap-8 xl:gap-10">
           <ThemeChipList
             title={CORE_MESSAGE.learn}
             icon={IconEye}
