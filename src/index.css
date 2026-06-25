@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
+
+  --color-navy-900: #111827;
+  --color-navy-950: #0a0f1a;
+  --color-warm-300: #e8c9a0;
+  --color-warm-400: #d4a574;
+  --color-warm-500: #c4956a;
+  --color-warm-800: #6b4f32;
+  --color-warm-950: #2a1f14;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0a0f1a;
+    color: #f8fafc;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #0a0f1a;
+    color: #f8fafc;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  [id] {
+    scroll-margin-top: 88px;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    @apply text-3xl sm:text-4xl lg:text-5xl text-white leading-tight tracking-tight;
+  }
+
+  .section-subheading {
+    @apply text-base sm:text-lg text-slate-400 leading-relaxed;
+  }
+
+  .eyebrow {
+    @apply text-xs sm:text-sm font-semibold uppercase tracking-widest text-warm-400;
+  }
+
+  .card {
+    @apply bg-slate-900/80 rounded-2xl border border-slate-800 p-6 sm:p-8 backdrop-blur-sm;
+  }
+
+  .bg-warm-glow {
+    background: radial-gradient(ellipse at 50% 0%, rgba(212, 165, 116, 0.08) 0%, transparent 60%);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #d4a574;
+  outline-offset: 2px;
+}
