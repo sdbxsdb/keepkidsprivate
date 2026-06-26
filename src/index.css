@@ -20,6 +20,7 @@
     -moz-osx-font-smoothing: grayscale;
     background-color: #0a0f1a;
     color: #f8fafc;
+    overflow-x: clip;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -32,6 +33,7 @@
     font-family: var(--font-sans);
     background-color: #0a0f1a;
     color: #f8fafc;
+    overflow-x: clip;
   }
 
   *,

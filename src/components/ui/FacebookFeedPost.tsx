@@ -31,14 +31,17 @@ function MarkerBadge({ n, className = '' }: { n: number; className?: string }) {
   )
 }
 
-function MarkerPopoverToggle({
+const MARKER_HIT_AREA =
+  'relative inline-flex items-center justify-center touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 p-2.5 sm:p-0 -m-2.5 sm:m-0'
+
+function MarkerToggle({
   n,
   label,
   active,
   onToggle,
   badgeClassName = '',
   className = '',
-  popoverSide = 'right',
+  compactHitArea = false,
 }: {
   n: number
   label: string
@@ -46,35 +49,40 @@ function MarkerPopoverToggle({
   onToggle: (n: number) => void
   badgeClassName?: string
   className?: string
-  popoverSide?: 'left' | 'right'
+  compactHitArea?: boolean
 }) {
+  const hitArea = compactHitArea
+    ? 'relative inline-flex items-center justify-center touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 p-2 sm:p-0 -m-2 sm:m-0'
+    : MARKER_HIT_AREA
+
   return (
-    <span className={`relative inline-flex align-middle ${className}`}>
-      <button
-        type="button"
-        className="inline-flex cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7a33e] focus-visible:ring-offset-1"
-        aria-label={`${n}. ${label}`}
-        aria-expanded={active}
-        onClick={() => onToggle(n)}
-      >
-        <MarkerBadge
-          n={n}
-          className={`${active ? 'ring-[#e7a33e] ring-offset-1' : ''} ${badgeClassName}`.trim()}
-        />
-      </button>
-      {active && (
-        <span
-          role="tooltip"
-          className={`absolute z-50 w-max max-w-[200px] px-2.5 py-1.5 rounded-lg bg-[#fff3cd] text-[#050505] text-[11px] font-semibold leading-snug shadow-md ring-1 ring-[#e7a33e]/60 pointer-events-none ${
-            popoverSide === 'right'
-              ? 'left-full top-1/2 -translate-y-1/2 ml-1.5'
-              : 'right-full top-1/2 -translate-y-1/2 mr-1.5'
-          }`}
-        >
-          {label}
-        </span>
-      )}
-    </span>
+    <button
+      type="button"
+      className={`${hitArea} ${className} inline-flex cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7a33e] focus-visible:ring-offset-1`}
+      aria-label={`${n}. ${label}`}
+      aria-expanded={active}
+      onClick={() => onToggle(n)}
+    >
+      <MarkerBadge
+        n={n}
+        className={`${active ? 'ring-[#e7a33e] ring-offset-1' : ''} ${badgeClassName}`.trim()}
+      />
+    </button>
+  )
+}
+
+function ActiveMarkerOverlay({ n, label }: { n: number; label: string }) {
+  return (
+    <div
+      className="absolute bottom-2 left-2 z-20 max-w-[min(68%,11rem)] pointer-events-none"
+      role="status"
+      aria-live="polite"
+    >
+      <div className="flex items-center gap-1.5 px-2 py-1.5 rounded-md bg-[#fff3cd]/95 text-[#050505] shadow-md ring-1 ring-[#e7a33e]/60 backdrop-blur-[1px]">
+        <MarkerBadge n={n} className="flex-shrink-0" />
+        <span className="text-[11px] font-semibold leading-tight">{label}</span>
+      </div>
+    </div>
   )
 }
 
@@ -94,7 +102,7 @@ function MarkerLegendToggle({
   return (
     <button
       type="button"
-      className="inline-flex cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7a33e] focus-visible:ring-offset-1"
+      className={`${MARKER_HIT_AREA} cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7a33e] focus-visible:ring-offset-1`}
       aria-label={`${n}. ${label}`}
       aria-expanded={active}
       onClick={() => onToggle(n)}
@@ -126,12 +134,14 @@ function MarkedText({
       <span className="bg-[#fff3cd] text-[#050505] px-0.5 rounded-sm box-decoration-clone">
         {children}
       </span>
-      <MarkerPopoverToggle
+      <MarkerToggle
         n={n}
         label={label}
         active={active}
         onToggle={onToggle}
         badgeClassName="w-4 h-4 text-[9px] min-w-[16px]"
+        className="align-middle"
+        compactHitArea
       />
     </span>
   )
@@ -188,7 +198,7 @@ export function FacebookFeedPost({
                   {EXAMPLE_POST.author}
                 </span>
                 {showMarkers && (
-                  <MarkerPopoverToggle
+                  <MarkerToggle
                     n={9}
                     label={MARKER_LABELS[9]}
                     active={isActive(9)}
@@ -201,7 +211,7 @@ export function FacebookFeedPost({
                 <span aria-hidden="true">·</span>
                 <span>{EXAMPLE_POST.audience}</span>
                 {showMarkers && (
-                  <MarkerPopoverToggle
+                  <MarkerToggle
                     n={10}
                     label={MARKER_LABELS[10]}
                     active={isActive(10)}
@@ -250,13 +260,19 @@ export function FacebookFeedPost({
             )}
           </div>
 
-          <div className="relative bg-[#f0f2f5] overflow-visible">
+          <div className="relative bg-[#f0f2f5]">
             <ExampleImage imageKey="sourcePost" className="w-full aspect-[4/3]" showPlaceholderLabel={false} />
+
+            {showMarkers && activeMarker !== null && (
+              <ActiveMarkerOverlay
+                n={activeMarker}
+                label={MARKER_LABELS[activeMarker]}
+              />
+            )}
 
             {showMarkers &&
               PHOTO_HOTSPOTS.map((spot, i) => {
                 const n = i + 1
-                const popoverSide = spot.x > 65 ? 'left' : 'right'
                 return (
                   <div
                     key={spot.id}
@@ -267,12 +283,11 @@ export function FacebookFeedPost({
                       transform: 'translate(-50%, -50%)',
                     }}
                   >
-                    <MarkerPopoverToggle
+                    <MarkerToggle
                       n={n}
                       label={spot.label}
                       active={isActive(n)}
                       onToggle={toggleMarker}
-                      popoverSide={popoverSide}
                     />
                   </div>
                 )
@@ -326,13 +341,13 @@ export function FacebookFeedPost({
                   <p className="text-[13px] font-semibold text-[#050505] leading-tight inline-flex items-center flex-wrap gap-x-1.5 gap-y-1">
                     <span>{EXAMPLE_POST.sampleComment.author}</span>
                     {showMarkers && (
-                      <MarkerPopoverToggle
+                      <MarkerToggle
                         n={15}
                         label={MARKER_LABELS[15]}
                         active={isActive(15)}
                         onToggle={toggleMarker}
                         badgeClassName="w-4 h-4 text-[9px] min-w-[16px]"
-                        popoverSide="left"
+                        compactHitArea
                       />
                     )}
                   </p>
