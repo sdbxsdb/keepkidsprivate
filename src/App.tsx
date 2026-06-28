@@ -8,6 +8,7 @@ import {
   TenSecondCheckSection,
   FinalCTASection,
 } from './components/sections/TenSecondCheckSection'
+import { HelpSpreadTheWordSection } from './components/sections/HelpSpreadTheWordSection'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <DontBelieveUsSection />
         <TenSecondCheckSection />
         <FinalCTASection />
+        <HelpSpreadTheWordSection />
       </main>
 
       <Footer />

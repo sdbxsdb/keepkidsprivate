@@ -104,10 +104,6 @@ export function FinalCTASection() {
             data, and Report Remove (Childline/IWF).
           </p>
         </div>
-
-        <p className="text-center text-sm text-slate-500">
-          Share this with schools, nurseries and parent groups.
-        </p>
       </div>
     </section>
   );

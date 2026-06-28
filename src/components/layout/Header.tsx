@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: "The Reality", href: "dont-believe-us" },
   { label: "Share safely", href: "ten-second-check" },
   { label: "The Stats", href: "final-cta" },
+  { label: "Help spread the word", href: "help-spread-the-word" },
 ];
 
 export function Header() {
