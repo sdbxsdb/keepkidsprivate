@@ -5,17 +5,20 @@ export const config = { runtime: 'edge' }
 const COUNTER_KEY = 'kkp:visitors'
 
 function getRedis() {
-  const url = process.env.UPSTASH_REDIS_REST_URL
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN
-  if (!url || !token) return null
-  return new Redis({ url, token })
+  try {
+    return Redis.fromEnv()
+  } catch {
+    return null
+  }
 }
 
 export default async function handler(request: Request) {
   const redis = getRedis()
 
   if (!redis) {
-    console.warn('[visit] counter unavailable — set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN')
+    console.warn(
+      '[visit] counter unavailable — link Upstash KV/Redis to this project',
+    )
     return Response.json({ count: null }, { status: 503 })
   }
 
